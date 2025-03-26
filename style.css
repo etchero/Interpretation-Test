@@ -14,7 +14,7 @@ body {
 }
 
 .container {
-    width: 400px;
+    width: 800px; /* Double the original width */
     background-color: white;
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0,0,0,0.1);
@@ -41,12 +41,29 @@ header {
     font-size: 18px;
 }
 
+.main-content {
+    display: flex;
+    width: 100%;
+}
+
 #input-section, #test-section, #result-section {
     padding: 20px;
+    width: 100%;
+}
+
+.input-wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
 }
 
 .input-container {
     margin-bottom: 15px;
+    width: 100%;
+}
+
+.input-container:first-child {
+    margin-right: 20px;
 }
 
 .input-label {
@@ -127,4 +144,11 @@ textarea {
 
 .hidden {
     display: none;
+}
+
+@media (max-width: 800px) {
+    .container {
+        width: 100%;
+        margin: 0 10px;
+    }
 }
