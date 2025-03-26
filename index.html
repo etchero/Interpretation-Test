@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>안동 영어종결센터 - Interpretation Practice</title>
+    <title>안동 영어종결센터 - Interpretation Practice 해석 연습</title>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
@@ -14,32 +14,36 @@
             <div class="header-bottom">Interpretation Practice</div>
         </header>
 
-        <div id="input-section">
-            <div class="input-container">
-                <div class="input-label">영어문장을 복/붙해서 넣으세요</div>
-                <textarea id="english-sentences" placeholder="여기에 영어 문장들을 입력하세요. 각 문장은 새 줄에 입력해주세요."></textarea>
-            </div>
-            
-            <div class="input-container">
-                <div class="input-label">한국어 뜻을 복/붙해서 넣으세요</div>
-                <textarea id="korean-translations" placeholder="위에 입력한 영어 문장들의 한국어 뜻을 입력하세요. 각 뜻은 새 줄에 입력하고 문장 개수와 일치하도록 주의해 주세요."></textarea>
+        <div class="main-content">
+            <div id="input-section">
+                <div class="input-wrapper">
+                    <div class="input-container">
+                        <div class="input-label">영어문장을 복/붙해서 넣으세요</div>
+                        <textarea id="english-sentences" placeholder="여기에 영어 문장들을 입력하세요. 각 문장은 새 줄에 입력해주세요."></textarea>
+                    </div>
+                    
+                    <div class="input-container">
+                        <div class="input-label">한국어 뜻을 복/붙해서 넣으세요</div>
+                        <textarea id="korean-translations" placeholder="위에 입력한 영어 문장들의 한국어 뜻을 입력하세요. 각 뜻은 새 줄에 입력하고 문장 개수와 일치하도록 주의해 주세요."></textarea>
+                    </div>
+
+                    <button id="start-test-btn" class="main-btn">해석 Test 시작</button>
+                </div>
             </div>
 
-            <button id="start-test-btn" class="main-btn">해석 Test 시작</button>
-        </div>
-
-        <div id="test-section" class="hidden">
-            <div id="test-questions"></div>
-            <button id="submit-test-btn" class="main-btn">제출</button>
-        </div>
-
-        <div id="result-section" class="hidden">
-            <div id="total-score">
-                <div class="score-label">전체 평균</div>
-                <div id="total-percentage">0%</div>
+            <div id="test-section" class="hidden">
+                <div id="test-questions"></div>
+                <button id="submit-test-btn" class="main-btn">제출</button>
             </div>
-            <div id="detailed-results"></div>
-            <button id="reset-btn" class="main-btn">처음으로 돌아가기</button>
+
+            <div id="result-section" class="hidden">
+                <div id="total-score">
+                    <div class="score-label">전체 평균</div>
+                    <div id="total-percentage">0%</div>
+                </div>
+                <div id="detailed-results"></div>
+                <button id="reset-btn" class="main-btn">처음으로 돌아가기</button>
+            </div>
         </div>
     </div>
 
