@@ -1,0 +1,134 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Noto Sans KR', sans-serif;
+    background-color: #f4f4f4;
+    line-height: 1.6;
+    color: #333;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: white;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+header h1 {
+    font-size: 30px;
+    color: #2c3e50;
+    border-bottom: 5px solid #3498db;
+    padding-bottom: 5px;
+}
+
+header h2 {
+    font-size: 30px;
+    color: #27ae60;
+    margin-top: 5px;
+}
+
+.input-container {
+    margin-bottom: 20px;
+}
+
+.input-container h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #2980b9;
+}
+
+textarea {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid #3498db;
+    border-radius: 8px;
+    min-height: 150px;
+    resize: vertical;
+    font-size: 14px;
+}
+
+.main-btn {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.main-btn:hover {
+    background-color: #2980b9;
+}
+
+#test-section, #result-section {
+    margin-top: 20px;
+}
+
+.test-question {
+    background-color: #f9f9f9;
+    border: 2px solid #3498db;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 15px;
+}
+
+.test-question p {
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.test-question input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #bdc3c7;
+    border-radius: 4px;
+}
+
+.result-item {
+    margin-bottom: 15px;
+    padding: 10px;
+    background-color: #f1f1f1;
+    border-radius: 8px;
+}
+
+.user-answer {
+    color: black;
+}
+
+.correct-answer {
+    color: red;
+}
+
+.incorrect-part {
+    text-decoration: underline;
+}
+
+.hidden {
+    display: none;
+}
+
+#total-score h3 {
+    text-align: center;
+    font-size: 24px;
+    color: #2c3e50;
+    margin-bottom: 20px;
+}
+
+#total-percentage {
+    color: #e74c3c;
+    font-weight: bold;
+}
