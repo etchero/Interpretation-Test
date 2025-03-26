@@ -147,6 +147,24 @@ textarea {
     display: none;
 }
 
+/* 새로 추가된 스타일 */
+.user-answer {
+    color: black;
+}
+
+.correct-answer {
+    color: purple;
+}
+
+.result-item .match {
+    color: green;
+}
+
+.result-item .mismatch {
+    color: red;
+    font-weight: bold;
+}
+
 @media (max-width: 800px) {
     .container {
         width: 100%;
