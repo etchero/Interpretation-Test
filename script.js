@@ -64,6 +64,54 @@ document.addEventListener('DOMContentLoaded', () => {
         testSection.classList.remove('hidden');
     });
 
+    // Function to highlight differences
+    function highlightDifferences(userAnswer, correctAnswer) {
+        // Remove punctuation and convert to lowercase
+        const cleanUserWords = userAnswer.replace(/[^\w\s가-힣]/gi, '').toLowerCase().trim().split(/\s+/);
+        const cleanCorrectWords = correctAnswer.replace(/[^\w\s가-힣]/gi, '').toLowerCase().trim().split(/\s+/);
+
+        // Create highlighted version of user answer
+        const highlightedWords = cleanUserWords.map(word => {
+            if (cleanCorrectWords.includes(word)) {
+                return `<span class="match">${word}</span>`;
+            } else {
+                return `<span class="mismatch">${word}</span>`;
+            }
+        });
+
+        return highlightedWords.join(' ');
+    }
+
+    // Function to calculate text similarity with more flexible matching
+    function calculateSimilarity(userAnswer, correctAnswer) {
+        // Remove punctuation and convert to lowercase
+        const cleanUserWords = userAnswer.replace(/[^\w\s가-힣]/gi, '').toLowerCase().trim().split(/\s+/);
+        const cleanCorrectWords = correctAnswer.replace(/[^\w\s가-힣]/gi, '').toLowerCase().trim().split(/\s+/);
+
+        // More flexible matching by considering partial matches and word order
+        let matchingWords = 0;
+        const usedCorrectWords = new Set();
+
+        cleanUserWords.forEach(userWord => {
+            const matchIndex = cleanCorrectWords.findIndex(
+                (correctWord, index) => 
+                    correctWord === userWord && !usedCorrectWords.has(index)
+            );
+
+            if (matchIndex !== -1) {
+                matchingWords++;
+                usedCorrectWords.add(matchIndex);
+            }
+        });
+
+        // Calculate similarity percentage
+        const similarityPercentage = Math.round(
+            (matchingWords / Math.max(cleanUserWords.length, cleanCorrectWords.length)) * 100
+        );
+
+        return similarityPercentage;
+    }
+
     // Function to submit the test
     submitTestBtn.addEventListener('click', () => {
         // Collect user answers
@@ -80,12 +128,14 @@ document.addEventListener('DOMContentLoaded', () => {
             
             // Calculate similarity percentage
             const similarity = calculateSimilarity(userAnswer, correctAnswer);
+            const highlightedUserAnswer = highlightDifferences(userAnswer, correctAnswer);
 
             return {
                 english: sentence.english,
                 userAnswer,
                 correctAnswer,
-                similarity
+                similarity,
+                highlightedUserAnswer
             };
         });
 
@@ -104,32 +154,11 @@ document.addEventListener('DOMContentLoaded', () => {
             <div class="result-item">
                 <p><strong>문장 ${index + 1}:</strong> ${result.english}</p>
                 <p>일치율: ${result.similarity}%</p>
-                <p>나의 답변: <span class="user-answer">${result.userAnswer}</span></p>
+                <p>나의 답변: <span class="user-answer">${result.highlightedUserAnswer}</span></p>
                 <p>정답: <span class="correct-answer">${result.correctAnswer}</span></p>
             </div>
         `).join('');
     });
-
-    // Function to calculate text similarity
-    function calculateSimilarity(userAnswer, correctAnswer) {
-        // Remove punctuation and convert to lowercase
-        const cleanUserAnswer = userAnswer.replace(/[^\w\s가-힣]/gi, '').toLowerCase().trim();
-        const cleanCorrectAnswer = correctAnswer.replace(/[^\w\s가-힣]/gi, '').toLowerCase().trim();
-
-        // Split into words
-        const userWords = cleanUserAnswer.split(/\s+/);
-        const correctWords = cleanCorrectAnswer.split(/\s+/);
-
-        // Calculate matching words
-        const matchingWords = userWords.filter(word => correctWords.includes(word));
-
-        // Calculate similarity percentage
-        const similarityPercentage = Math.round(
-            (matchingWords.length / Math.max(userWords.length, correctWords.length)) * 100
-        );
-
-        return similarityPercentage;
-    }
 
     // Reset function
     resetBtn.addEventListener('click', () => {
